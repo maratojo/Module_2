@@ -6,7 +6,7 @@
 #  By: maratojo <maratojo@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/05/01 14:20:06 by maratojo        #+#    #+#               #
-#  Updated: 2026/05/01 16:54:56 by maratojo        ###   ########.fr        #
+#  Updated: 2026/05/02 08:41:49 by maratojo        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -18,36 +18,48 @@ class GardenError(Exception):
 class PlantError(GardenError):
     pass
 
+
 class WaterError(GardenError):
     pass
+
 
 def Plant(plant_name: str) -> None:
     raise PlantError(f"The {plant_name} plant is wilting")
 
+
 def Water(nb: int) -> None:
-    raise WaterError("Not enough water in the tank!")
+    if nb <= 5:
+        raise WaterError("Not enough water in the tank!")
+    else:
+        print("The tank is full")
+
 
 def test() -> None:
+    print("\nTesting PlantError...")
+    try:
+        Plant("tomato")
+    except PlantError as e:
+        print(f"Caught {type(e).__name__}: {e}")
 
-    tests = [(Plant, "tomato", PlantError), (Water,0, WaterError)]
-    for (name, arg, error) in tests:
-        print(f"\nTesting {error.__name__}...")
-        try:
-            fun(other)
-        except error as e:
-            print(f"Caught {type(e).__name__}: {e}")
+    print("\nTesting WaterError...")
+    try:
+        Water(5)
+    except WaterError as e:
+        print(f"Caught {type(e).__name__}: {e}")
 
     print("\nTesting catching all garden errors...")
-    for name, arg, error in tests:
-        try:
-            name(arg)
-        except error as e:
-            print(f"Caught {type(e).__name__}: {e}")
+    try:
+        Plant("tomato")
+    except GardenError as e:
+        print(f"Caught {type(e).__name__}: {e}")
+
+    try:
+        Water(5)
+    except GardenError as e:
+        print(f"Caught {type(e).__name__}: {e}")
+
 
 if __name__ == "__main__":
     print("=== Custom Garden Errors Demo ===")
     test()
     print("\nAll custom error types work correctly!")
-
-
-

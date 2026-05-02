@@ -6,7 +6,7 @@
 #  By: maratojo <maratojo@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/04/29 13:39:56 by maratojo        #+#    #+#               #
-#  Updated: 2026/04/30 14:15:08 by maratojo        ###   ########.fr        #
+#  Updated: 2026/05/02 08:43:07 by maratojo        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -31,4 +31,6 @@ def test_temperature() -> None:
             print(f"Caught input_temperature error: {e}")
     print("\nAll tests completed - program didn't crash!")
 
-test_temperature()
+
+if __name__ == "__main__":
+    test_temperature()
