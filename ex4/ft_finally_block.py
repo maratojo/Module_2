@@ -1,14 +1,16 @@
-# ************************************************************************* #
-#                                                                           #
-#                                                      :::      ::::::::    #
-#  ft_finally_block.py                               :+:      :+:    :+:    #
-#                                                  +:+ +:+         +:+      #
-#  By: maratojo <maratojo@student.42.fr>         +#+  +:+       +#+         #
-#                                              +#+#+#+#+#+   +#+            #
-#  Created: 2026/05/02 08:17:07 by maratojo        #+#    #+#               #
-#  Updated: 2026/05/02 08:21:20 by maratojo        ###   ########.fr        #
-#                                                                           #
-# ************************************************************************* #
+#!/usr/bin/env python3
+
+# ########################################################################### #
+#   shebang: 1                                                                #
+#                                                          :::      ::::::::  #
+#   ft_finally_block.py                                  :+:      :+:    :+:  #
+#                                                      +:+ +:+         +:+    #
+#   By: maratojo <maratojo@student.42antananarivo.   +#+  +:+       +#+       #
+#                                                  +#+#+#+#+#+   +#+          #
+#   Created: 2026/05/19 13:46:59 by maratojo            #+#    #+#            #
+#   Updated: 2026/05/19 13:46:59 by maratojo           ###   ########.fr      #
+#                                                                             #
+# ########################################################################### #
 
 
 class GardenError(Exception):
@@ -23,7 +25,6 @@ class PlantError(GardenError):
 def water_plant(plant_name: str) -> None:
     if plant_name != plant_name.capitalize():
         raise PlantError(f"Invalid plant name to water: '{plant_name}'")
-
     else:
         print(f"Watering {plant_name}: [OK]")
 
